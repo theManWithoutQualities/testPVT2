@@ -1,6 +1,6 @@
 package com.konst007;
 
-public class CalculationImpl implements Calculation{
+class CalculationImpl implements Calculation{
 
     public boolean isPossibleMove(Dancer dancer, int[] sequence, int distance) {
 
@@ -14,7 +14,18 @@ public class CalculationImpl implements Calculation{
 
     public int calculateSteps(int... sequence) {
 
-        return 0;
+        Dancer dancer = new Dancer();
+        int sum=0;
+        int distance = sequence[dancer.getPosition()];
+        while (isPossibleMove(dancer, sequence, distance)){
+
+                sum+=distance;
+                dancer.move(distance);
+                distance = sequence[dancer.getPosition()];
+
+        }
+        sum+=dancer.getPosition();
+        return sum;
 
     }
 
