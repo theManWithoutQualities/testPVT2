@@ -17,11 +17,16 @@ class CalculationImpl implements Calculation{
         Dancer dancer = new Dancer();
         int sum=0;
         int distance = sequence[dancer.getPosition()];
+        int[] flag = new int[sequence.length];
         while (isPossibleMove(dancer, sequence, distance)){
 
-                sum+=distance;
+            if(flag[dancer.getPosition()]!=1) {
+                flag[dancer.getPosition()]=1;
+                sum += distance;
                 dancer.move(distance);
                 distance = sequence[dancer.getPosition()];
+            }else
+                return -1;
 
         }
         sum+=dancer.getPosition();
