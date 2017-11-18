@@ -8,6 +8,8 @@ class CalculationImpl implements Calculation{
             return false;
         if((distance%2!=0)&&(dancer.getPosition()-distance<0))
             return false;
+	if(distance==0)
+	    return false;
         return true;
 
     }
